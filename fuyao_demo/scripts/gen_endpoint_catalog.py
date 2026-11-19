@@ -43,7 +43,7 @@ def main() -> int:
                 "",
                 f"`{ep['path']}` · 难度 {'★' * ep.get('difficulty', 1)} · "
                 f"可视化：{VIZ_LABEL.get(ep.get('viz', 'table'), ep.get('viz'))} · "
-                f"[在线体验](https://henrylin99.github.io/thx_quant/ep/{ep['id']}/)",
+                f"本地体验：`/ep/{ep['id']}`（启动 fuyao_demo 后访问）",
                 "",
                 ep.get("doc", "").strip(),
                 "",
