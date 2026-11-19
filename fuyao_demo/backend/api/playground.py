@@ -56,7 +56,13 @@ def _convert_param(pdef: Dict[str, Any], raw: Any) -> Any:
         if ms is None:
             raise FuyaoError("bad_param", f"参数 {pdef['name']} 日期格式非法: {raw!r}（应为 YYYY-MM-DD）")
         return ms
-    # str / select / codes / date_str 均按字符串透传
+    if ptype == "codes":
+        # 逗号分隔字符串 → 代码列表（client 方法签名是 Sequence[str]）
+        codes = [t.strip() for t in str(raw).replace("，", ",").split(",") if t.strip()]
+        if not codes:
+            raise FuyaoError("bad_param", f"参数 {pdef['name']} 需要至少一个代码")
+        return codes
+    # str / select / date_str 按字符串透传
     return str(raw)
 
 
