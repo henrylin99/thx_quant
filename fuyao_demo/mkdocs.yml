@@ -40,8 +40,12 @@ markdown_extensions:
 
 nav:
   - 首页: index.md
-  - 架构设计: architecture.md
-  - 扶摇 API 契约手册: api-contract.md
-  - 接口目录: endpoints.md
-  - 扩展指南: extending.md
-  - 部署运维: deployment.md
+  - 使用:
+      - 使用指南（无需编程）: usage.md
+      - 部署运维: deployment.md
+  - 开发:
+      - 架构设计: architecture.md
+      - 扩展指南: extending.md
+  - 参考:
+      - 接口目录: endpoints.md
+      - 扶摇 API 契约手册: api-contract.md

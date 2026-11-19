@@ -1,36 +1,18 @@
-# fuyao_demo 文档
+# fuyao_demo · 扶摇数据查询终端
 
-扶摇（同花顺官方金融数据 API）数据查询终端——41 个接口 × 8 个分组，注册表驱动，新增接口查询页零前后端代码改动。
+**查 A 股数据的网页工具——不写代码，选功能、填参数、点查询。**
 
-```text
-填参数 → 查询 → 表格 / 图表 / JSON
-```
+覆盖行情快照、历史 K 线、涨停/热股/龙虎榜、财务估值、基金等 41 项数据，来源为同花顺官方 API（扶摇）。
 
-## 文档目录
+## 按需入口
 
-| 文档 | 内容 |
-|------|------|
-| [架构设计](architecture.md) | 注册表驱动机制、请求全链路、设计取舍 |
-| [扶摇 API 契约手册](api-contract.md) | 认证 / 信封 / 时区坑 / 字段双命名 / 错误码全集 |
-| [接口目录](endpoints.md) | 41 个接口的参数、限制与贴士（由注册表自动生成） |
-| [扩展指南](extending.md) | 如何新增接口查询页 / 定制图表组件 |
-| [部署运维](deployment.md) | 开发态、构建托管、环境变量与安全清单 |
-
-## 快速开始
-
-```bash
-# 后端（Python 3.10+）
-cd backend
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-cp .env.example .env        # 填入 FUYAO_API_KEY（https://fuyao.aicubes.cn 申请）
-.venv/bin/python app.py     # http://127.0.0.1:5010
-
-# 前端（Node 18+，开发态）
-cd ../frontend
-npm install
-npm run dev                 # http://127.0.0.1:5173（/api 代理到 5010）
-```
+| 你是谁 / 你想做什么 | 去这里 |
+|---|---|
+| 👤 **我想查数据，不写代码** | [使用指南 →](usage.md)（含界面截图与术语表） |
+| 🔧 **我想把项目跑起来** | [部署运维 →](deployment.md)（两种模式，最简一条命令） |
+| 🧑‍💻 **我想读懂/修改代码** | [架构设计 →](architecture.md)（注册表驱动，~2200 行全解） |
+| ➕ **我想加一个新接口页** | [扩展指南 →](extending.md)（3 分钟 3 步） |
+| 📖 **我要查接口参数/错误码** | [接口目录 →](endpoints.md)（41 接口自动生成）· [契约手册 →](api-contract.md) |
 
 ## 一图看懂
 
@@ -47,3 +29,9 @@ npm run dev                 # http://127.0.0.1:5173（/api 代理到 5010）
                                                    ▼
                                           fuyao.aicubes.cn REST
 ```
+
+## 界面预览
+
+![功能目录首页](assets/home.png)
+
+> 完整截图与操作说明见[使用指南](usage.md)。
