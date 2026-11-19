@@ -1,0 +1,3757 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="扶摇（同花顺金融数据 API）数据查询终端文档——架构设计、API 契约手册、41 接口目录、扩展指南与部署运维">
+      
+      
+      
+        <link rel="canonical" href="https://henrylin99.github.io/thx_quant/endpoints/">
+      
+      
+        <link rel="prev" href="../extending/">
+      
+      
+        <link rel="next" href="../api-contract/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>接口目录 - fuyao_demo · 扶摇数据查询终端</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9784658154228475"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-VGHZY4EELE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-VGHZY4EELE");
+  </script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="fuyao_demo · 扶摇数据查询终端" class="md-header__button md-logo" aria-label="fuyao_demo · 扶摇数据查询终端" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            fuyao_demo · 扶摇数据查询终端
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              接口目录
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/henrylin99/thx_quant" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    henrylin99/thx_quant
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../usage/" class="md-tabs__link">
+          
+  
+  
+  使用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/" class="md-tabs__link">
+          
+  
+  
+  开发
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  参考
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="fuyao_demo · 扶摇数据查询终端" class="md-nav__button md-logo" aria-label="fuyao_demo · 扶摇数据查询终端" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    fuyao_demo · 扶摇数据查询终端
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/henrylin99/thx_quant" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    henrylin99/thx_quant
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    使用
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    使用指南（无需编程）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    部署运维
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    开发
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    架构设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extending/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    扩展指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口目录
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接口目录
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        行情快照（3）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="行情快照（3）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A 股全市场实时快照（分页）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股实时快照（批量）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        指数实时快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        指数（2）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指数（2）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同花顺指数目录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同花顺指数成分股
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        历史K线（1）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="历史K线（1）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股历史 K 线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        财务与估值（2）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="财务与估值（2）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        财务报表（三大表）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        估值快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        日历与竞价（5）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="日历与竞价（5）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交易日历
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        盘前竞价短线风向标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集合竞价快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集合竞价个股机会筛选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        竞价机会可选日期
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特色数据（12）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="特色数据（12）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        涨停股票池
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跌停股票池
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        炸板股票池
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        连板天梯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同花顺热股榜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        热股飙升榜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        历史热股排行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股热榜排名走势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股异动原因（全市场列表）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股异动原因（按代码查询）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        异动股票监控名单
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        龙虎榜
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标的检索（1）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="标的检索（1）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标的模糊搜索
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金（15）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基金（15）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金基本资料
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场内基金实时快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ETF 历史日线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金净值序列
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金区间收益与排名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金最大回撤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金重仓持仓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金持有人结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金前十大持有人
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金资产配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金行业配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金经理详情
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金诊断
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金历史分红
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金公司详情
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误码速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    扶摇 API 契约手册
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        行情快照（3）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="行情快照（3）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A 股全市场实时快照（分页）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股实时快照（批量）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        指数实时快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        指数（2）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="指数（2）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同花顺指数目录
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同花顺指数成分股
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#k1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        历史K线（1）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="历史K线（1）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#k" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股历史 K 线
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        财务与估值（2）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="财务与估值（2）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        财务报表（三大表）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        估值快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        日历与竞价（5）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="日历与竞价（5）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        交易日历
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        盘前竞价短线风向标
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集合竞价快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        集合竞价个股机会筛选
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        竞价机会可选日期
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        特色数据（12）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="特色数据（12）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        涨停股票池
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跌停股票池
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        炸板股票池
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        连板天梯
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同花顺热股榜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        热股飙升榜
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        历史热股排行
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股热榜排名走势
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股异动原因（全市场列表）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        个股异动原因（按代码查询）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        异动股票监控名单
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        龙虎榜
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标的检索（1）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="标的检索（1）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标的模糊搜索
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金（15）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="基金（15）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金基本资料
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        场内基金实时快照
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ETF 历史日线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金净值序列
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金区间收益与排名
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金最大回撤
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金重仓持仓
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金持有人结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金前十大持有人
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金资产配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金行业配置
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金经理详情
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金诊断
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金历史分红
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基金公司详情
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        错误码速查
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">接口目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>共 <strong>41</strong> 个接口 / 8 个分组。本页由 <code>scripts/gen_endpoint_catalog.py</code> 从 <code>fuyao_registry.py</code> 自动生成，<strong>请勿手改</strong>。</p>
+<div class="admonition tip">
+<p class="admonition-title">在线调试</p>
+<p>每个接口下方有「参数表单 + 查询按钮」——点击后直接请求你本机运行的 fuyao_demo 后端，返回数据自动渲染成表格。需要先启动后端：<code>cd backend &amp;&amp; .venv/bin/python app.py</code>。</p>
+</div>
+<h2 id="3">行情快照（3）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="a">A 股全市场实时快照（分页）<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/prices/snapshot</code> · 难度 ★ · 可视化：表格</p>
+<p>全市场 A 股实时快照，支持 limit/offset 分页（单页 6000 可覆盖全市场），或改传 thscodes 做批量查询（≤100 只）。二选一：传了 thscodes 则忽略分页参数。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>limit</code></td>
+<td>整数</td>
+<td></td>
+<td>6000</td>
+<td>分页模式单页条数</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td>整数</td>
+<td></td>
+<td>0</td>
+<td>分页起始偏移</td>
+</tr>
+<tr>
+<td><code>thscodes</code></td>
+<td>代码列表</td>
+<td></td>
+<td></td>
+<td>逗号分隔，≤100 只，如 600519.SH,000001.SZ；传则忽略分页</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="snapshot-page" data-prefill="{&quot;limit&quot;: 20}">
+<div class="fy-fields"><label class="fy-field"><span>单页条数<br><small>分页模式单页条数</small></span><input type="number" name="limit" placeholder=""></label><label class="fy-field"><span>偏移量<br><small>分页起始偏移</small></span><input type="number" name="offset" placeholder=""></label><label class="fy-field"><span>代码批量<br><small>逗号分隔，≤100 只，如 600519.SH,000001.SZ；传则忽略分页</small></span><input type="text" name="thscodes" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 字段双命名坑：实测返回 high_price/low_price/prev_price，官方文档写 highest_price/lowest_price/prev_close_price，取值时两者都试。
+⚠️ thscodes 批量上限 100 只，超量会被服务端拒绝（1003）。</p>
+</blockquote>
+<h3 id="_2">个股实时快照（批量）<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/prices/snapshot?thscodes=…</code> · 难度 ★ · 可视化：表格</p>
+<p>按 thscodes 批量查询实时快照（快照分页接口的批量形态），返回 item 数组。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscodes</code></td>
+<td>代码列表</td>
+<td>✅</td>
+<td></td>
+<td>逗号分隔，≤100 只</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="price-snapshot-batch" data-prefill="{&quot;thscodes&quot;: &quot;600519.SH,000001.SZ,300750.SZ&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>股票代码 <b style="color:#e53935">*</b><br><small>逗号分隔，≤100 只</small></span><input type="text" name="thscodes" placeholder="600519.SH,000001.SZ,300750.SZ"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 单次 ≤100 只。thscode 格式：600519.SH / 000001.SZ / 300750.SZ / 688981.SH。</p>
+</blockquote>
+<h3 id="_3">指数实时快照<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share-index/prices/snapshot</code> · 难度 ★★ · 可视化：表格</p>
+<p>沪深交易所指数 + 同花顺板块指数的实时快照，返回 (item[], timestamp)。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscodes</code></td>
+<td>代码列表</td>
+<td>✅</td>
+<td></td>
+<td>逗号分隔，≤100 只</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="index-snapshot" data-prefill="{&quot;thscodes&quot;: &quot;000001.SH,399001.SZ,000300.SH,399006.SZ&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>指数代码 <b style="color:#e53935">*</b><br><small>逗号分隔，≤100 只</small></span><input type="text" name="thscodes" placeholder="000001.SH,399001.SZ,000300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 无北交所指数；未知代码会导致整批 1002 连坐——先过滤再请求。
+⚠️ 同花顺板块指数代码可从「指数目录」接口获取（如 885742.SH 等 ths 板块）。</p>
+</blockquote>
+<h2 id="2">指数（2）<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="_4">同花顺指数目录<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share-index/catalog/ths-index-list</code> · 难度 ★ · 可视化：表格</p>
+<p>同花顺自有指数目录（行业/概念板块指数），tag 可空=全部。实测 industry 约 320 条、cn_concept 约 390 条。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tag</code></td>
+<td>下拉</td>
+<td></td>
+<td></td>
+<td>industry=行业 / cn_concept=概念 / 空=全部</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="ths-index-catalog" data-prefill="{&quot;tag&quot;: &quot;industry&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>分类<br><small>industry=行业 / cn_concept=概念 / 空=全部</small></span><select name="tag"><option value=""></option><option value="industry">industry</option><option value="cn_concept">cn_concept</option></select></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 本接口是「指数快照」「指数成分股」的同花顺板块指数代码来源。</p>
+</blockquote>
+<h3 id="_5">同花顺指数成分股<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share-index/constituents/ths-stock-list</code> · 难度 ★ · 可视化：表格</p>
+<p>按同花顺指数代码查成分股列表（thscode/ticker/name）。thscode 可从指数目录接口取得。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td>同花顺指数代码</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="ths-index-constituents" data-prefill="{&quot;thscode&quot;: &quot;885742.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>指数代码 <b style="color:#e53935">*</b><br><small>同花顺指数代码</small></span><input type="text" name="thscode" placeholder="如 885742.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 传入非指数代码会返回 1002；先用指数目录接口拿到合法 thscode。</p>
+</blockquote>
+<h2 id="k1">历史K线（1）<a class="headerlink" href="#k1" title="Permanent link">&para;</a></h2>
+<h3 id="k">个股历史 K 线<a class="headerlink" href="#k" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/prices/historical</code> · 难度 ★★ · 可视化：K线</p>
+<p>单标的 OHLCV 历史K线，interval=1d（日线），窗口 ≤10 年。日期参数转成北京时间零点 epoch ms 传入。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_ms</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td>转北京时间零点 epoch ms</td>
+</tr>
+<tr>
+<td><code>end_ms</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="historical-kline" data-prefill="{&quot;thscode&quot;: &quot;600519.SH&quot;, &quot;start_ms&quot;: &quot;2026-09-01&quot;, &quot;end_ms&quot;: &quot;2026-11-13&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>股票代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="600519.SH"></label><label class="fy-field"><span>开始日期<br><small>转北京时间零点 epoch ms</small></span><input type="date" name="start_ms" placeholder=""></label><label class="fy-field"><span>结束日期<br><small></small></span><input type="date" name="end_ms" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ adjust 锁定 none：服务端前复权有逐日漂移，禁用（复权因子可走全市场 dump 自算）。
+⚠️ start/end 均可空=默认最近区间；超 10 年窗口服务端拒绝。
+⚠️ date_ms 时间口径：北京时间零点的 epoch ms，按 UTC 解析会偏一天。</p>
+</blockquote>
+<h2 id="2_1">财务与估值（2）<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h2>
+<h3 id="_6">财务报表（三大表）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/financials/{income-statements|balance-sheets|cash-flow-statements}</code> · 难度 ★★ · 可视化：表格</p>
+<p>单标的财务报表，table 选择利润表/资产负债表/现金流量表，period=quarterly（单季）/annual，单次 ≤20 期。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>table</code></td>
+<td>下拉</td>
+<td></td>
+<td></td>
+<td>income=利润表 / balance_sheet=资产负债表 / cash_flow=现金流量表</td>
+</tr>
+<tr>
+<td><code>period</code></td>
+<td>下拉</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>整数</td>
+<td></td>
+<td>8</td>
+<td>≤20</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="financial-statement" data-prefill="{&quot;thscode&quot;: &quot;600519.SH&quot;, &quot;table&quot;: &quot;income&quot;, &quot;period&quot;: &quot;quarterly&quot;, &quot;limit&quot;: 8}">
+<div class="fy-fields"><label class="fy-field"><span>股票代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="600519.SH"></label><label class="fy-field"><span>报表类型<br><small>income=利润表 / balance_sheet=资产负债表 / cash_flow=现金流量表</small></span><select name="table"><option value="income">income</option><option value="balance_sheet">balance_sheet</option><option value="cash_flow">cash_flow</option></select></label><label class="fy-field"><span>周期<br><small></small></span><select name="period"><option value="quarterly">quarterly</option><option value="annual">annual</option></select></label><label class="fy-field"><span>期数上限<br><small>≤20</small></span><input type="number" name="limit" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 公司尚未披露报告期时返回 5003。
+⚠️ 返回为逐期数组，字段非常多，教学时关注 revenue/net_profit 等核心科目即可。</p>
+</blockquote>
+<h3 id="_7">估值快照<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/valuations/snapshot</code> · 难度 ★ · 可视化：表格</p>
+<p>按代码批量查询估值快照：pe_ttm / pe_mrq / pb_mrq / ps_ttm / pcf_ttm。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscodes</code></td>
+<td>代码列表</td>
+<td>✅</td>
+<td></td>
+<td>逗号分隔，≤100 只</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="valuations-snapshot" data-prefill="{&quot;thscodes&quot;: &quot;600519.SH,000001.SZ,300750.SZ,688981.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>股票代码 <b style="color:#e53935">*</b><br><small>逗号分隔，≤100 只</small></span><input type="text" name="thscodes" placeholder="600519.SH,000001.SZ,300750.SZ"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 单次 ≤100 只；仅当前快照，无历史序列（历史估值需自行按日归档）。</p>
+</blockquote>
+<h2 id="5">日历与竞价（5）<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="_8">交易日历<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/calendar/trading-days</code> · 难度 ★ · 可视化：表格</p>
+<p>交易日历，固定返回近一年窗口，item: {date_ms, date}。</p>
+<div class="fy-play" data-ep="trading-days" data-prefill="{}">
+<div class="fy-fields"></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ date_ms 字段是北京时间零点 epoch ms——用来体会扶摇的时间口径最直观。</p>
+</blockquote>
+<h3 id="_9">盘前竞价短线风向标<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/auction/short-term-benchmark</code> · 难度 ★★ · 可视化：表格</p>
+<p>盘前集合竞价的短线风向标数据（date 可空=最近交易日，支持一年内历史）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="short-term-benchmark" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>日期<br><small></small></span><input type="date" name="date" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ date 格式 yyyy-MM-dd。</p>
+</blockquote>
+<h3 id="_10">集合竞价快照<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/auction/snapshot</code> · 难度 ★★ · 可视化：表格</p>
+<p>按代码批量查询集合竞价快照：竞价价/竞价涨幅/竞价量额/未匹配量/竞价换手/量比等。stage=live（实时）/ final（终态）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscodes</code></td>
+<td>代码列表</td>
+<td>✅</td>
+<td></td>
+<td>逗号分隔，≤100 只</td>
+</tr>
+<tr>
+<td><code>stage</code></td>
+<td>下拉</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="auction-snapshot" data-prefill="{&quot;thscodes&quot;: &quot;600519.SH,000001.SZ,300750.SZ&quot;, &quot;stage&quot;: &quot;live&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>股票代码 <b style="color:#e53935">*</b><br><small>逗号分隔，≤100 只</small></span><input type="text" name="thscodes" placeholder="600519.SH,000001.SZ"></label><label class="fy-field"><span>阶段<br><small></small></span><select name="stage"><option value=""></option><option value="live">live</option><option value="final">final</option></select></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 文档写 finallive，实测合法值为 live / final —— 扶摇文档与实测差异的经典案例。
+⚠️ auction_pct 为百分数原值；bid_change_ratio 为小数比例，口径不同注意区分。</p>
+</blockquote>
+<h3 id="_11">集合竞价个股机会筛选<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/auction-stock-opportunities</code> · 难度 ★★★ · 可视化：表格</p>
+<p>竞价阶段的个股机会名单（warn_type 告警类型分组），支持按市场/剔除ST/排序/分页。size 范围 1~20。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td>yyyy-MM-dd，须在可选日期集合内</td>
+</tr>
+<tr>
+<td><code>market</code></td>
+<td>下拉</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>exclude_st</code></td>
+<td>开关</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort_by</code></td>
+<td>文本</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort_order</code></td>
+<td>下拉</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>整数</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>整数</td>
+<td></td>
+<td>20</td>
+<td>1~20</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="auction-stock-opportunities" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>日期<br><small>yyyy-MM-dd，须在可选日期集合内</small></span><input type="date" name="date" placeholder=""></label><label class="fy-field"><span>市场<br><small></small></span><select name="market"><option value=""></option><option value="SH">SH</option><option value="SZ">SZ</option><option value="BJ">BJ</option></select></label><label class="fy-field"><span>剔除ST<br><small></small></span><select name="exclude_st"><option value="true">true</option><option value="false">false</option></select></label><label class="fy-field"><span>排序字段<br><small></small></span><input type="text" name="sort_by" placeholder=""></label><label class="fy-field"><span>排序方向<br><small></small></span><select name="sort_order"><option value=""></option><option value="asc">asc</option><option value="desc">desc</option></select></label><label class="fy-field"><span>页码<br><small></small></span><input type="number" name="page" placeholder=""></label><label class="fy-field"><span>每页条数<br><small>1~20</small></span><input type="number" name="size" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ date 必须在「竞价机会可选日期」集合内（见下一接口），否则 1002。
+⚠️ bid_change_ratio 为小数比例；related_block 是关联板块 JSON 字符串。</p>
+</blockquote>
+<h3 id="_12">竞价机会可选日期<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/auction-opportunity-dates</code> · 难度 ★ · 可视化：表格</p>
+<p>返回集合竞价机会接口可用的日期集合（dates 升序）与 latest_date（默认查询日）。</p>
+<div class="fy-play" data-ep="auction-opportunity-dates" data-prefill="{}">
+<div class="fy-fields"></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 做「机会筛选」前先调本接口拿合法 date，可避免 1002。</p>
+</blockquote>
+<h2 id="12">特色数据（12）<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">涨停股票池<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/limit-up-pool</code> · 难度 ★ · 可视化：表格</p>
+<p>当日涨停股池：连板数/涨停时间/涨停原因/封单金额等。date_ms 可空=最近交易日；支持按连板数等排序分页。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date_ms</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>整数</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>整数</td>
+<td></td>
+<td>100</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort_field</code></td>
+<td>下拉</td>
+<td></td>
+<td>continue_day_cnt</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort_dir</code></td>
+<td>下拉</td>
+<td></td>
+<td>desc</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="limit-up-pool" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>日期<br><small></small></span><input type="date" name="date_ms" placeholder=""></label><label class="fy-field"><span>页码<br><small></small></span><input type="number" name="page" placeholder=""></label><label class="fy-field"><span>每页条数<br><small></small></span><input type="number" name="size" placeholder=""></label><label class="fy-field"><span>排序字段<br><small></small></span><select name="sort_field"><option value="continue_day_cnt">continue_day_cnt</option><option value="last_price">last_price</option><option value="seal_money">seal_money</option><option value="limit_up_time">limit_up_time</option></select></label><label class="fy-field"><span>排序方向<br><small></small></span><select name="sort_dir"><option value="desc">desc</option><option value="asc">asc</option></select></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ date_ms 为北京时间零点 epoch ms；非交易日不传 date_ms 返回空集（total=0）而非报错。
+⚠️ continue_day_text（如「5连板」）与 continue_day_cnt（数值）同时提供。</p>
+</blockquote>
+<h3 id="_14">跌停股票池<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/limit-down-pool</code> · 难度 ★ · 可视化：表格</p>
+<p>当日跌停股池：首次/最终跌停时间、换手率等。date_ms 口径同涨停池。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date_ms</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>整数</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>整数</td>
+<td></td>
+<td>100</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="limit-down-pool" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>日期<br><small></small></span><input type="date" name="date_ms" placeholder=""></label><label class="fy-field"><span>页码<br><small></small></span><input type="number" name="page" placeholder=""></label><label class="fy-field"><span>每页条数<br><small></small></span><input type="number" name="size" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 字段：first_limit_time / last_limit_time / turnover_ratio_pct。</p>
+</blockquote>
+<h3 id="_15">炸板股票池<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/limit-break-pool</code> · 难度 ★ · 可视化：表格</p>
+<p>曾涨停后开板的股票池：open_times（炸板次数）、换手率等。date_ms 口径同涨停池。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date_ms</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>整数</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>整数</td>
+<td></td>
+<td>100</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="limit-break-pool" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>日期<br><small></small></span><input type="date" name="date_ms" placeholder=""></label><label class="fy-field"><span>页码<br><small></small></span><input type="number" name="page" placeholder=""></label><label class="fy-field"><span>每页条数<br><small></small></span><input type="number" name="size" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 炸板率 = 炸板数 /（涨停数 + 炸板数），是市场分歧度的常用指标——可用涨停池+本接口自行计算。</p>
+</blockquote>
+<h3 id="_16">连板天梯<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/limit-up-ladder</code> · 难度 ★★ · 可视化：天梯矩阵</p>
+<p>近 30 个交易日的连板天梯矩阵。boards 键：two_board → seven_over（2板至7板及以上），每档为个股列表（board_num/seal_nextday/sign_level）。</p>
+<div class="fy-play" data-ep="limit-up-ladder" data-prefill="{}">
+<div class="fy-fields"></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ seal_nextday=次日是否封板，可用于统计连板晋级率。
+⚠️ boards 是「档位→个股列表」的嵌套结构，前端用矩阵视图渲染。</p>
+</blockquote>
+<h3 id="_17">同花顺热股榜<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/hot-stock-list</code> · 难度 ★ · 可视化：条形图</p>
+<p>同花顺热股 Top30（period: day 日榜 / hour 小时榜），含热度值与排名变化。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>period</code></td>
+<td>下拉</td>
+<td></td>
+<td>day</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="hot-stock-list" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>周期<br><small></small></span><select name="period"><option value="day">day</option><option value="hour">hour</option></select></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ heat 为字符串数值；rank_trend ∈ up/down/flat。</p>
+</blockquote>
+<h3 id="_18">热股飙升榜<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/skyrocket-list</code> · 难度 ★ · 可视化：条形图</p>
+<p>热度飙升最快的 Top30（period: day/hour），观察热度异动的入口。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>period</code></td>
+<td>下拉</td>
+<td></td>
+<td>day</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="skyrocket-list" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>周期<br><small></small></span><select name="period"><option value="day">day</option><option value="hour">hour</option></select></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 与热股榜对比：热股榜看「绝对热度」，飙升榜看「热度变化」。</p>
+</blockquote>
+<h3 id="_19">历史热股排行<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/hot-stock-list-history</code> · 难度 ★★ · 可视化：表格</p>
+<p>指定日期的历史热股 Top30（date: yyyy-MM-dd，仅支持一年内）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code></td>
+<td>日期</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="hot-stock-list-history" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>日期 <b style="color:#e53935">*</b><br><small></small></span><input type="date" name="date" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ date 格式非法返回 1002，超出一年返回 1003——错误码教学的典型案例。</p>
+</blockquote>
+<h3 id="_20">个股热榜排名走势<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/hot-stock-rank-trend</code> · 难度 ★★ · 可视化：表格</p>
+<p>单只股票在热榜上的逐日排名走势（窗口与日期均限一年内），返回全部点位不做 Top30 截断。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td>日期</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td>日期</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="hot-stock-rank-trend" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>股票代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="600519.SH"></label><label class="fy-field"><span>开始日期 <b style="color:#e53935">*</b><br><small></small></span><input type="date" name="start_date" placeholder=""></label><label class="fy-field"><span>结束日期 <b style="color:#e53935">*</b><br><small></small></span><input type="date" name="end_date" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ start_date &gt; end_date 时服务端返回 1004。</p>
+</blockquote>
+<h3 id="_21">个股异动原因（全市场列表）<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/anomaly-analysis-list</code> · 难度 ★★ · 可视化：表格</p>
+<p>当日个股异动原因列表（自然语言解读 + 关键词），tag_codes 多值 OR 过滤。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tag_codes</code></td>
+<td>代码列表</td>
+<td></td>
+<td></td>
+<td>逗号分隔多值 OR</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="anomaly-analysis-list" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>异动标签<br><small>逗号分隔多值 OR</small></span><input type="text" name="tag_codes" placeholder="LIMIT_UP,SHARP_RISE"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 合法标签：LIMIT_UP / LIMIT_DOWN / SHARP_RISE / SHARP_FALL / RAPID_RALLY / RAPID_DECLINE（服务端大小写不敏感）。
+⚠️ 当日数据暂不可用时返回 3002（多为盘前/非交易日）。</p>
+</blockquote>
+<h3 id="_22">个股异动原因（按代码查询）<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/anomaly-analysis-stock</code> · 难度 ★★ · 可视化：表格</p>
+<p>按代码批量查询当日异动原因（去重前 ≤50 个），返回按请求顺序排列；当日无异动的代码被服务端忽略。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscodes</code></td>
+<td>代码列表</td>
+<td>✅</td>
+<td></td>
+<td>逗号分隔，≤50 个</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="anomaly-analysis-stock" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>股票代码 <b style="color:#e53935">*</b><br><small>逗号分隔，≤50 个</small></span><input type="text" name="thscodes" placeholder="600519.SH,000001.SZ"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 上限 50 个（与其他接口的 100 不同）——批量上限各接口不一致，是踩坑高发区。</p>
+</blockquote>
+<h3 id="_23">异动股票监控名单<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/abnormal-monitor-list</code> · 难度 ★★ · 可视化：表格</p>
+<p>交易所异动监控名单（state: current 当前 / history 历史），monitor_label 1/2=严重异动，其它=重点监控。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td>下拉</td>
+<td></td>
+<td>current</td>
+<td></td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td>整数</td>
+<td></td>
+<td>1</td>
+<td></td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td>整数</td>
+<td></td>
+<td>30</td>
+<td>≤30</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="abnormal-monitor-list" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>状态<br><small></small></span><select name="state"><option value="current">current</option><option value="history">history</option></select></label><label class="fy-field"><span>页码<br><small></small></span><input type="number" name="page" placeholder=""></label><label class="fy-field"><span>每页条数<br><small>≤30</small></span><input type="number" name="size" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ size ≤30，分页从 1 起；end_date_ms 可空表示监控仍在进行。</p>
+</blockquote>
+<h3 id="_24">龙虎榜<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p><code>/api/a-share/special-data/dragon-tiger-list</code> · 难度 ★★ · 可视化：表格</p>
+<p>龙虎榜数据：board_type = all 全部 / org 机构 / hot_money 游资；date 可空=最近发布日。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>board_type</code></td>
+<td>下拉</td>
+<td></td>
+<td>all</td>
+<td></td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td>日期</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="dragon-tiger-list" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>榜单类型<br><small></small></span><select name="board_type"><option value="all">all</option><option value="org">org</option><option value="hot_money">hot_money</option></select></label><label class="fy-field"><span>日期<br><small></small></span><input type="date" name="date" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ date 可空时服务端自动取最近发布日（非交易日自动回退），与涨停池「非交易日返回空集」的行为不同。</p>
+</blockquote>
+<h2 id="1">标的检索（1）<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
+<h3 id="_25">标的模糊搜索<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p><code>/api/meta/tickers/search</code> · 难度 ★ · 可视化：表格</p>
+<p>名称/代码模糊匹配（用于搜索联想），返回 thscode/ticker/name/exchange/asset_type/currency。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>asset_type</code></td>
+<td>下拉</td>
+<td></td>
+<td>a-share</td>
+<td></td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>整数</td>
+<td></td>
+<td>10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="ticker-search" data-prefill="{&quot;query&quot;: &quot;贵州茅台&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>关键词 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="query" placeholder="贵州茅台 或 600519"></label><label class="fy-field"><span>资产类型<br><small></small></span><select name="asset_type"><option value="a-share">a-share</option><option value="a-share-index">a-share-index</option><option value="fund">fund</option></select></label><label class="fy-field"><span>条数<br><small></small></span><input type="number" name="limit" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 其他接口都要 thscode，忘了代码时先用本接口反查——推荐作为所有页面的前置工具。</p>
+</blockquote>
+<h2 id="15">基金（15）<a class="headerlink" href="#15" title="Permanent link">&para;</a></h2>
+<h3 id="_26">基金基本资料<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/profile/detail</code> · 难度 ★ · 可视化：表格</p>
+<p>基金档案：名称/成立日/管理人/基金经理/规模/单位净值等。manager_info 里的 manager_id 是「基金经理详情」的入参。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td>场内如 510300.SH，场外如 000001.OF</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-profile" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small>场内如 510300.SH，场外如 000001.OF</small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 基金接口均为单只查询，thscodes 逗号多值不支持。
+⚠️ company_id / manager_id 分别从本接口取值后再查「基金公司」「基金经理」——链式查询教学案例。</p>
+</blockquote>
+<h3 id="_27">场内基金实时快照<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/market/snapshot</code> · 难度 ★ · 可视化：表格</p>
+<p>场内基金（仅 ETF/LOF）实时行情快照，单只查询。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-market-snapshot" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 场外基金走场内接口返回 3004。</p>
+</blockquote>
+<h3 id="etf">ETF 历史日线<a class="headerlink" href="#etf" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/market/historical</code> · 难度 ★★ · 可视化：K线</p>
+<p>ETF 前复权历史日线（仅 ETF，LOF 不支持），窗口 ≤5 自然年。adjust 固定 null（服务端已做前复权）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>start_ms</code></td>
+<td>日期</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>end_ms</code></td>
+<td>日期</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-historical" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;, &quot;start_ms&quot;: &quot;2026-08-01&quot;, &quot;end_ms&quot;: &quot;2026-11-13&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>ETF 代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label><label class="fy-field"><span>开始日期 <b style="color:#e53935">*</b><br><small></small></span><input type="date" name="start_ms" placeholder=""></label><label class="fy-field"><span>结束日期 <b style="color:#e53935">*</b><br><small></small></span><input type="date" name="end_ms" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 仅 ETF；窗口超 5 自然年返回 1003；start/end 转北京时间零点 epoch ms。</p>
+</blockquote>
+<h3 id="_28">基金净值序列<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/performance/nav</code> · 难度 ★ · 可视化：表格</p>
+<p>净值序列（range: week/month/quarter/fyear…，缺省仅最新一条；nav_type: unit 单位净值 / adj 累计/复权净值）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td>下拉</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>nav_type</code></td>
+<td>下拉</td>
+<td></td>
+<td>unit,adj</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-nav" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;, &quot;range&quot;: &quot;fyear&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label><label class="fy-field"><span>区间<br><small></small></span><select name="range"><option value=""></option><option value="week">week</option><option value="month">month</option><option value="quarter">quarter</option><option value="half">half</option><option value="fyear">fyear</option><option value="now">now</option></select></label><label class="fy-field"><span>净值类型<br><small></small></span><select name="nav_type"><option value="unit">unit</option><option value="adj">adj</option><option value="unit,adj">unit,adj</option></select></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ range 缺省只返回最新一条，想画曲线记得传 range。</p>
+</blockquote>
+<h3 id="_29">基金区间收益与排名<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/performance/returns</code> · 难度 ★ · 可视化：收益卡片</p>
+<p>各区间收益（return_<em>）、同类均值（peer_average_</em>）与同类排名（rank_*）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-returns" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 返回为扁平 dict，前端用卡片视图对比「收益 vs 同类均值」。</p>
+</blockquote>
+<h3 id="_30">基金最大回撤<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/performance/drawdowns</code> · 难度 ★ · 可视化：收益卡片</p>
+<p>各区间最大回撤（week..now；nowyear=今年以来 / now=成立以来）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-drawdowns" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ now / nowyear 是特殊区间键，其余为 week/month 等常规区间。</p>
+</blockquote>
+<h3 id="_31">基金重仓持仓<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/portfolio/holdings</code> · 难度 ★ · 可视化：表格</p>
+<p>最新重仓持仓：顶层汇总（股票/债券/基金占比、前十大集中度）+ item 个股明细。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-holdings" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 顶层 summary 与 item[] 并存的结构——解析时先看汇总再看明细。</p>
+</blockquote>
+<h3 id="_32">基金持有人结构<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/holders/detail</code> · 难度 ★★ · 可视化：表格</p>
+<p>持有人结构逐期序列：机构/个人占比、户数；merge_scope = all / merged（合并）/ separate（分份额）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>merge_scope</code></td>
+<td>下拉</td>
+<td></td>
+<td>all</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-holders-detail" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label><label class="fy-field"><span>合并口径<br><small></small></span><select name="merge_scope"><option value="all">all</option><option value="merged">merged</option><option value="separate">separate</option></select></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 机构占比变化是观察资金属性的常用维度。</p>
+</blockquote>
+<h3 id="_33">基金前十大持有人<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/holders/top</code> · 难度 ★★ · 可视化：表格</p>
+<p>前十大持有人（limit ≤10）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>整数</td>
+<td></td>
+<td>10</td>
+<td>≤10</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-holders-top" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label><label class="fy-field"><span>条数<br><small>≤10</small></span><input type="number" name="limit" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ limit 上限 10。</p>
+</blockquote>
+<h3 id="_34">基金资产配置<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/portfolio/asset-allocation</code> · 难度 ★★ · 可视化：表格</p>
+<p>历史逐报告期资产配置：股票/债券/存款/其他占比。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-asset-allocation" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 报告期口径为季度，最新一期可能有披露滞后。</p>
+</blockquote>
+<h3 id="_35">基金行业配置<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/portfolio/industry-allocation</code> · 难度 ★★ · 可视化：表格</p>
+<p>历史逐报告期行业配置（report_period 如 2026Q2 + industry_name/ratio_pct）。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-industry-allocation" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 可与「同花顺指数目录」的行业指数结合，观察基金调仓与行业轮动。</p>
+</blockquote>
+<h3 id="_36">基金经理详情<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/managers/detail</code> · 难度 ★★★ · 可视化：表格</p>
+<p>基金经理详情（任职经历/在管规模）。manager_id 从「基金基本资料」的 manager_info 中获取，不能用名称代替。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>manager_id</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td>先从基金基本资料接口获取</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-manager-detail" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>经理 ID <b style="color:#e53935">*</b><br><small>先从基金基本资料接口获取</small></span><input type="text" name="manager_id" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 链式查询：基金资料 → manager_id → 经理详情，体现扶摇接口间的引用关系。</p>
+</blockquote>
+<h3 id="_37">基金诊断<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/diagnostics/detail</code> · 难度 ★★★ · 可视化：表格</p>
+<p>基金诊断详情（诊断维度/同类对比/韧性指标），上游结构原样透传，结构较深。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-diagnostics" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 返回结构与其它接口差异较大（透传上游），解析时建议先打印原始 JSON 摸结构。</p>
+</blockquote>
+<h3 id="_38">基金历史分红<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/corporate-actions/dividends</code> · 难度 ★ · 可视化：表格</p>
+<p>历史分红汇总（dividend_count/dividend_total）+ 逐条每 10 份分红金额与除息日。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>thscode</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-dividends" data-prefill="{&quot;thscode&quot;: &quot;510300.SH&quot;}">
+<div class="fy-fields"><label class="fy-field"><span>基金代码 <b style="color:#e53935">*</b><br><small></small></span><input type="text" name="thscode" placeholder="510300.SH"></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 顶层汇总 + 明细并存结构，与「重仓持仓」一致。</p>
+</blockquote>
+<h3 id="_39">基金公司详情<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<p><code>/api/fund/companies/detail</code> · 难度 ★★★ · 可视化：表格</p>
+<p>基金公司详情。company_id 从「基金基本资料」获取，不能用名称代替。</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>必填</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>company_id</code></td>
+<td>文本</td>
+<td>✅</td>
+<td></td>
+<td>先从基金基本资料接口获取</td>
+</tr>
+</tbody>
+</table>
+<div class="fy-play" data-ep="fund-company" data-prefill="{}">
+<div class="fy-fields"><label class="fy-field"><span>公司 ID <b style="color:#e53935">*</b><br><small>先从基金基本资料接口获取</small></span><input type="text" name="company_id" placeholder=""></label></div>
+<div class="fy-actions"><button class="fy-run" type="button">查询</button><span class="fy-status"></span></div>
+<div class="fy-result" hidden></div>
+</div>
+<blockquote>
+<p>⚠️ 又一个链式查询入参：基金资料 → company_id → 公司详情。</p>
+</blockquote>
+<h2 id="_40">错误码速查<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4001</td>
+<td>请求过于频繁（限频）</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>无效代码或非交易日</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>超出批量/窗口上限（如批量 &gt;100 只、热股历史超一年、ETF 历史窗口超 5 自然年）</td>
+</tr>
+<tr>
+<td>1004</td>
+<td>参数组合非法（如热榜走势 start_date &gt; end_date）</td>
+</tr>
+<tr>
+<td>3001</td>
+<td>标的不存在（基金接口）</td>
+</tr>
+<tr>
+<td>3002</td>
+<td>数据未就绪（如当日异动原因暂不可用、场外基金走场内接口）</td>
+</tr>
+<tr>
+<td>3004</td>
+<td>不支持的数据类型（如场外基金查询场内快照）</td>
+</tr>
+<tr>
+<td>5003</td>
+<td>未披露报告期（财务接口，公司尚未披露该期报表）</td>
+</tr>
+<tr>
+<td>no_key</td>
+<td>本地未配置 FUYAO_API_KEY，请在 backend/.env 中设置</td>
+</tr>
+</tbody>
+</table>
+<script>
+(function () {
+  var BASE_KEY = "fuyao_docs_base";
+  function base() {
+    var v = localStorage.getItem(BASE_KEY);
+    return (v && v.trim()) || "http://127.0.0.1:5010";
+  }
+  // base URL 配置条（页面顶部注入一次）
+  var bar = document.createElement("div");
+  bar.className = "fy-basebar";
+  bar.innerHTML = '<label>本地后端地址 <input id="fy-base" type="text" size="28"> '
+    + '<small>（默认 http://127.0.0.1:5010，改完自动保存；需先启动 fuyao_demo）</small></label>';
+  var h1 = document.querySelector("article h1");
+  if (h1 && h1.parentNode) h1.parentNode.insertBefore(bar, h1.nextSibling);
+  var baseInput = document.getElementById("fy-base");
+  if (baseInput) {
+    baseInput.value = base();
+    baseInput.addEventListener("change", function () {
+      localStorage.setItem(BASE_KEY, this.value.trim());
+    });
+  }
+
+  function findRows(data) {
+    if (Array.isArray(data) && data.length && typeof data[0] === "object") return data;
+    if (data && typeof data === "object") {
+      var keys = ["item", "items", "list", "data", "records", "rows"];
+      for (var i = 0; i < keys.length; i++) {
+        var v = data[keys[i]];
+        if (Array.isArray(v) && v.length && typeof v[0] === "object") return v;
+      }
+      for (var k in data) {
+        var v2 = data[k];
+        if (Array.isArray(v2) && v2.length && typeof v2[0] === "object") return v2;
+      }
+    }
+    return null;
+  }
+
+  function fmt(v) {
+    if (v === null || v === undefined) return "";
+    if (typeof v === "object") {
+      var s = JSON.stringify(v);
+      return s.length > 48 ? s.slice(0, 48) + "…" : s;
+    }
+    return String(v);
+  }
+
+  function renderTable(rows) {
+    var MAXR = 50, MAXC = 15;
+    var cols = [], seen = {};
+    rows.slice(0, 20).forEach(function (r) {
+      Object.keys(r).forEach(function (k) {
+        if (!seen[k]) { seen[k] = 1; cols.push(k); }
+      });
+    });
+    var hiddenCols = Math.max(0, cols.length - MAXC);
+    cols = cols.slice(0, MAXC);
+    var html = "<p>共 " + rows.length + " 行"
+      + (rows.length > MAXR ? "，仅显示前 " + MAXR + " 行" : "")
+      + (hiddenCols ? "，" + hiddenCols + " 列已省略" : "") + "</p>";
+    html += '<div class="fy-tablewrap"><table><thead><tr>';
+    cols.forEach(function (c) { html += "<th>" + fmt(c) + "</th>"; });
+    html += "</tr></thead><tbody>";
+    rows.slice(0, MAXR).forEach(function (r) {
+      html += "<tr>";
+      cols.forEach(function (c) { html += "<td>" + fmt(r[c]) + "</td>"; });
+      html += "</tr>";
+    });
+    return html + "</tbody></table></div>";
+  }
+
+  document.addEventListener("click", function (ev) {
+    var btn = ev.target.closest(".fy-run");
+    if (!btn) return;
+    var box = btn.closest(".fy-play");
+    var status = box.querySelector(".fy-status");
+    var out = box.querySelector(".fy-result");
+    var url = base() + "/api/playground/" + box.dataset.ep + "?";
+    var params = [];
+    box.querySelectorAll(".fy-fields [name]").forEach(function (el) {
+      if (el.value !== "") params.push(el.name + "=" + encodeURIComponent(el.value));
+    });
+    btn.disabled = true; btn.textContent = "查询中…";
+    status.textContent = ""; out.hidden = false;
+    out.innerHTML = '<p class="fy-muted">请求中…</p>';
+    fetch(url + params.join("&"))
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.ok) {
+          var rows = findRows(j.data);
+          if (rows) out.innerHTML = renderTable(rows);
+          else out.innerHTML = '<details open><summary>返回数据（非表格结构）</summary><pre>'
+            + JSON.stringify(j.data, null, 2).slice(0, 5000) + "</pre></details>";
+          status.textContent = "✅ " + j.elapsed_ms + " ms";
+        } else {
+          out.innerHTML = '<div class="fy-err"><b>错误 ' + (j.code || "") + "</b>："
+            + (j.message || "") + "</div>";
+          status.textContent = "❌";
+        }
+      })
+      .catch(function () {
+        out.innerHTML = '<div class="fy-err">无法连接本地后端 <code>' + base()
+          + '</code>。<br>请先启动：<code>cd fuyao_demo/backend && .venv/bin/python app.py</code>'
+          + "（文档页面在 GitHub Pages 上，查询走的是你本机的后端）。</div>";
+        status.textContent = "⚠️";
+      })
+      .finally(function () { btn.disabled = false; btn.textContent = "查询"; });
+  });
+
+  // 预填示例参数
+  document.querySelectorAll(".fy-play").forEach(function (box) {
+    try {
+      var pre = JSON.parse(box.dataset.prefill || "{}");
+      Object.keys(pre).forEach(function (k) {
+        var el = box.querySelector('.fy-fields [name="' + k + '"]');
+        if (el && pre[k] !== null && pre[k] !== undefined) el.value = pre[k];
+      });
+    } catch (e) {}
+  });
+})();
+</script>
+
+<style>
+.fy-play { border: 1px solid var(--md-typeset-table-color, #ddd); border-radius: 8px;
+  padding: .8rem 1rem; margin: .6rem 0 1.2rem; background: var(--md-code-bg-color, #f6f6f6); }
+.fy-fields { display: flex; flex-wrap: wrap; gap: .6rem 1rem; }
+.fy-field { display: flex; flex-direction: column; gap: .2rem; font-size: .72rem; min-width: 10rem; }
+.fy-field small { opacity: .7; }
+.fy-field input, .fy-field select { font-size: .8rem; padding: .25rem .4rem; min-width: 10rem; }
+.fy-actions { margin-top: .6rem; display: flex; align-items: center; gap: .8rem; }
+.fy-run { cursor: pointer; padding: .35rem 1.2rem; border-radius: 6px; border: none;
+  background: var(--md-primary-fg-color, #3f51b5); color: #fff; font-size: .8rem; }
+.fy-run:disabled { opacity: .5; }
+.fy-result { margin-top: .8rem; font-size: .78rem; overflow-x: auto; }
+.fy-tablewrap { max-height: 26rem; overflow: auto; }
+.fy-result table { border-collapse: collapse; }
+.fy-result th, .fy-result td { border: 1px solid var(--md-typeset-table-color, #ddd);
+  padding: .25rem .5rem; white-space: nowrap; }
+.fy-result th { position: sticky; top: 0; background: var(--md-code-bg-color, #eee); }
+.fy-err { border-left: 4px solid #e53935; padding: .5rem .8rem; background: rgba(229,57,53,.08); }
+.fy-muted { opacity: .6; }
+.fy-basebar { font-size: .75rem; padding: .5rem .8rem; margin: .8rem 0;
+  border: 1px dashed var(--md-typeset-table-color, #bbb); border-radius: 6px; }
+.fy-basebar input { font-size: .75rem; padding: .15rem .3rem; }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      © 2026 fuyao_demo · 仅供学习交流
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "navigation.top", "search.suggest", "search.highlight", "content.code.copy"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
