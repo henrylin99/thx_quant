@@ -1,0 +1,21 @@
+name: Deploy fuyao_demo docs to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["fuyao_demo/**"]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install mkdocs-material requests python-dotenv
+      - run: python fuyao_demo/scripts/gen_endpoint_catalog.py
+      - run: mkdocs gh-deploy --force --config-file fuyao_demo/mkdocs.yml

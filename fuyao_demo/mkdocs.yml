@@ -1,0 +1,47 @@
+site_name: fuyao_demo · 扶摇数据查询终端
+site_description: 扶摇（同花顺金融数据 API）数据查询终端文档——架构设计、API 契约手册、41 接口目录、扩展指南与部署运维
+site_url: https://henrylin99.github.io/thx_quant/
+repo_url: https://github.com/henrylin99/thx_quant
+repo_name: henrylin99/thx_quant
+copyright: © 2026 fuyao_demo · 仅供学习交流
+docs_dir: docs
+
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换深色模式
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: 切换浅色模式
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - 首页: index.md
+  - 架构设计: architecture.md
+  - 扶摇 API 契约手册: api-contract.md
+  - 接口目录: endpoints.md
+  - 扩展指南: extending.md
+  - 部署运维: deployment.md

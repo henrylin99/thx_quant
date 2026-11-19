@@ -15,3 +15,5 @@ dist/
 .DS_Store
 .run/
 *.log
+docs/endpoints.md
+site/
