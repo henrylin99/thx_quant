@@ -54,4 +54,4 @@ cd ../backend && .venv/bin/python app.py
 
 - 源：`fuyao_demo/docs/`（接口目录由 `scripts/gen_endpoint_catalog.py` 从注册表自动生成，**不要手改** `endpoints.md`）
 - 触发：push 到 main 且改动 `fuyao_demo/**`
-- 地址：https://henrylin99.github.io/thx_quant/
+- 地址：https://fuyao.chcc.blog/

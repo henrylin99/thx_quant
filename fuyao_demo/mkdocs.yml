@@ -1,6 +1,6 @@
 site_name: fuyao_demo · 扶摇数据查询终端
 site_description: 扶摇（同花顺金融数据 API）数据查询终端文档——架构设计、API 契约手册、41 接口目录、扩展指南与部署运维
-site_url: https://henrylin99.github.io/thx_quant/
+site_url: https://fuyao.chcc.blog/
 repo_url: https://github.com/henrylin99/thx_quant
 repo_name: henrylin99/thx_quant
 copyright: © 2026 fuyao_demo · 仅供学习交流
